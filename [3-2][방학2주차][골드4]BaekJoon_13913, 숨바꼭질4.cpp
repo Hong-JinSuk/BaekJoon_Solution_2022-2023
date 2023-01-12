@@ -10,26 +10,26 @@ int check[100001];
 vector<int> path;
 queue<int> q;
 
-int Search() { //bfsÇü½Ä
+int Search() { //bfsí˜•ì‹
 
 	q.push(n);
 	visited[n] = true;
 	int a = 1;
 	while (!q.empty()) {
 
-		int n = q.front(); // queue¿¡¼­ ¸Ç¾Õ¿¡ ÀÖ´Â°Å °¡Á®¿È
-		q.pop(); // °¡Á®¿Â°Å ÃÄ³¿
+		int n = q.front(); // queueì—ì„œ ë§¨ì•ì— ìˆëŠ”ê±° ê°€ì ¸ì˜´
+		q.pop(); // ê°€ì ¸ì˜¨ê±° ì³ëƒ„
 
-		int Next[3] = { n - 1,n + 1,n * 2 }; // ÀÌµ¿ÇÒ 3°¡Áö °æ¿ì
+		int Next[3] = { n - 1,n + 1,n * 2 }; // ì´ë™í•  3ê°€ì§€ ê²½ìš°
 
 		for (int i = 0; i < 3; i++) {
 
-			// ´ÙÀ½ °æ·Î°¡ 0ÀÌ»ó 100000ÀÌÇÏ ¹æ¹® xÀÎ °æ¿ì
+			// ë‹¤ìŒ ê²½ë¡œê°€ 0ì´ìƒ 100000ì´í•˜ ë°©ë¬¸ xì¸ ê²½ìš°
 			if (Next[i] >= 0 && Next[i] <= 100000 && !visited[Next[i]]) {
-				q.push(Next[i]); // queue¿¡ ³Ö¾îÁÖ¿ì¿ò
-				visited[Next[i]] = true; // ¹æ¹® Ç¥½Ã
-				acc[Next[i]] = acc[n] + 1; // ´©ÀûÀû
-				check[Next[i]] = n; // µµÂøÁöÁ¡¿¡ Ãâ¹ßÁöÁ¡ ÀúÀå
+				q.push(Next[i]); // queueì— ë„£ì–´ì£¼ìš°ì›€
+				visited[Next[i]] = true; // ë°©ë¬¸ í‘œì‹œ
+				acc[Next[i]] = acc[n] + 1; // ëˆ„ì ì 
+				check[Next[i]] = n; // ë„ì°©ì§€ì ì— ì¶œë°œì§€ì  ì €ì¥
 			}
 
 			if (Next[i] == k) {
@@ -49,7 +49,7 @@ int main() {
 	int answer = Search();
 	cout << answer << endl;
 
-	// µµÂøÁöÁ¡ºÎÅÍ ÇÏ³ª¾¿ µÚ·Î ÀúÀåÇØµĞ °æ·Î·Î Ã£¾Æ °¡´Â°Å
+	// ë„ì°©ì§€ì ë¶€í„° í•˜ë‚˜ì”© ë’¤ë¡œ ì €ì¥í•´ë‘” ê²½ë¡œë¡œ ì°¾ì•„ ê°€ëŠ”ê±°
 	path.push_back(k);
 	for (int i = 0; i < answer; i++) {
 		path.push_back(check[k]);
