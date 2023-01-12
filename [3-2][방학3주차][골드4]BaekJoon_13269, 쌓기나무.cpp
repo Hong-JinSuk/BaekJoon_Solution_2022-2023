@@ -10,7 +10,7 @@ int main() {
 
 	vector<vector<int>> Block(n, vector<int>(m, 0));
 
-	// Block ÀÔ·Â
+	// Block ìž…ë ¥
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			int num;
@@ -26,7 +26,7 @@ int main() {
 		num_n.push_back(num);
 
 		for (int j = 0; j < n; j++) {
-			// 0ÀÌ ¾Æ´Ï¸é ¾Õ¿¡¼­ º» ¸ð¾çÀ¸·Î ²Ë Ã¤¿öÁÜ 
+			// 0ì´ ì•„ë‹ˆë©´ ì•žì—ì„œ ë³¸ ëª¨ì–‘ìœ¼ë¡œ ê½‰ ì±„ì›Œì¤Œ 
 			if (Block[j][i] != 0) Block[j][i] = num;
 		}
 	}
@@ -39,13 +39,13 @@ int main() {
 
 		for (int j = 0; j < m; j++) {
 			if (Block[i][j] != 0) {
-				// ÃÖ´ë°ªº¸´Ù Å©´Ù¸é ÃÖ´ë°ªÀ¸·Î ¸ÂÃçÁØ´Ù.
+				// ìµœëŒ€ê°’ë³´ë‹¤ í¬ë‹¤ë©´ ìµœëŒ€ê°’ìœ¼ë¡œ ë§žì¶°ì¤€ë‹¤.
 				if (num < Block[i][j]) {
 					Block[i][j] = num;
 				}
 			}
 		}
-		if (i == 0) break; // ¿Ö ¾Ë¾Æ¼­ ¸ø³ª°¡Áö? ¤»¤»¤»¤»
+		if (i == 0) break; // ì™œ ì•Œì•„ì„œ ëª»ë‚˜ê°€ì§€? ã…‹ã…‹ã…‹ã…‹
 	}
 
 	// n=2 m=3
