@@ -15,7 +15,7 @@
 //	}
 //
 //
-//	// ÀÌ¹Ì ÀĞÀ» ¼ö ÀÖ´Â ±ÛÀÚ ÄÆ
+//	// ì´ë¯¸ ì½ì„ ìˆ˜ ìˆëŠ” ê¸€ì ì»·
 //	alphabet['a'-'a'] = true;
 //	alphabet['n'-'a'] = true;
 //	alphabet['t'-'a'] = true;
@@ -39,7 +39,7 @@
 using namespace std;
 
 #define r 3
-#define n 4 // 4°³Áß 3°³ ¼±ÅÃ
+#define n 4 // 4ê°œì¤‘ 3ê°œ ì„ íƒ
 
 int cArr[r] = { 0,};
 
@@ -59,7 +59,7 @@ void combination(int depth, int next) {
 }
 
 int main(void) {
-    cout << "Á¶ÇÕ (¼ø¼­x, Áßº¹x)" << endl;
+    cout << "ì¡°í•© (ìˆœì„œx, ì¤‘ë³µx)" << endl;
     combination(0, 1);
 
     return 0;
