@@ -12,7 +12,7 @@ int main() {
 	cin >> d >> n;
 
 	int num;
-	Oven.push_back(NULL); // ±×³É 1ºÎÅÍ ³Ö°í ½Í¾î¼­...
+	Oven.push_back(NULL); // ê·¸ëƒ¥ 1ë¶€í„° ë„£ê³  ì‹¶ì–´ì„œ...
 	for (int i = 1; i < d+1; i++) {
 		cin >> num;
 		Oven.push_back(num);
@@ -24,7 +24,7 @@ int main() {
 	}
 
 	for (int i = 1; i < d + 1; i++) {
-		// ¾îÂ÷ÇÇ ¾Æ·¡°¡ Ä¿ºÃÀÚ À§¿¡¼­ ³»·Á°¡¸é ´Ù ³»·Á°¡Áü
+		// ì–´ì°¨í”¼ ì•„ëž˜ê°€ ì»¤ë´¤ìž ìœ„ì—ì„œ ë‚´ë ¤ê°€ë©´ ë‹¤ ë‚´ë ¤ê°€ì§
 		if (i == d) break;
 		if (Oven[i + 1] > Oven[i]) Oven[i + 1] = Oven[i];
 	}
@@ -34,11 +34,11 @@ int main() {
 		int cnt = 0;
 		for (int i = d; i > 0; i--) {
 			cnt++;
-			if (Pizza[j] <= Oven[i]) { //ÇÇÀÚ°¡ i±îÁö ³»·Á°¡¸é
+			if (Pizza[j] <= Oven[i]) { //í”¼ìžê°€ iê¹Œì§€ ë‚´ë ¤ê°€ë©´
 				Loc -= cnt;
 				d = i - 1;
-				if (d == 0) Loc = -1; // ²ËÂ÷¸é 0
-				break; // ´ÙÀ½ÇÇÀÚ·Î
+				if (d == 0) Loc = -1; // ê½‰ì°¨ë©´ 0
+				break; // ë‹¤ìŒí”¼ìžë¡œ
 			}
 			if (i == 1) {
 				Loc = -1;
