@@ -5,7 +5,7 @@
 using namespace std;
 
 int N;
-int Min = 1000000001;
+int Min = 2000000001;
 
 int main() {
 
