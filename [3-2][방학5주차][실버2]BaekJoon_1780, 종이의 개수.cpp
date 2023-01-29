@@ -9,24 +9,21 @@ int compare;
 int v[2300][2300];
 int answer_1 = 0, answer_2 = 0, answer_3 = 0;
 
-void Check(int x) {
+void Check(int x, int compare) {
 	if (x != compare) isSame = false;
 	else isSame = true;
 }
 
 void div(int x, int y, int size) {
-	isSame=true;
+
 	for (int i = y; i < y + size; i++) {
 		for (int j = x; j < x + size; j++) {
-			if (v[i][j] != v[y][x]) {
-				isSame = false;
-				break;
-			}
+			Check(v[i][j], v[y][x]);
 		}
 		if (!isSame) break;
 	}
 
-	// °°Áö ¾ÊÀ¸¸é 9µîºĞ
+	// ê°™ì§€ ì•Šìœ¼ë©´ 9ë“±ë¶„
 	if (!isSame) {
 		for (int i = 0; i < 3; i++) {
 			int y_ = y + ((size / 3) * i);
@@ -47,13 +44,13 @@ int main() {
 
 	cin >> n;
 	
-	//// n*n ¹è¿­ »ı¼º
+	//// n*n ë°°ì—´ ìƒì„±
 	//for (int i = 0; i < n; i++) {
 	//	vector<int> num(n);
 	//	v.push_back(num);
 	//}
 
-	//// µ¥ÀÌÅÍ »ğÀÔ
+	//// ë°ì´í„° ì‚½ì…
 	//for (int i = 0; i < n; i++) {
 	//	for (int j = 0; j < n; j++) {
 	//		int num;
