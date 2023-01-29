@@ -19,6 +19,7 @@ void div(int x, int y, int size) {
 	for (int i = y; i < y + size; i++) {
 		for (int j = x; j < x + size; j++) {
 			Check(v[i][j], v[y][x]);
+			if(!isSame) break;
 		}
 		if (!isSame) break;
 	}
