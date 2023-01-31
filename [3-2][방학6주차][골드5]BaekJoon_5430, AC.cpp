@@ -12,7 +12,7 @@ bool re;
 bool isError;
 vector<string> answer;
 
-// ,À» Á¦¿ÜÇØ¼­ ¼ıÀÚ split ÇÏ´Â ÇÔ¼ö
+// ,ì„ ì œì™¸í•´ì„œ ìˆ«ì split í•˜ëŠ” í•¨ìˆ˜
 deque<string> split(string str, char Delimiter) {
 	istringstream iss(str);
 	string buffer;
@@ -31,7 +31,7 @@ int main() {
 	
 	for (int i = 0; i < T; i++) {
 
-		// ¸í·É¾î ÀÔ·Â
+		// ëª…ë ¹ì–´ ì…ë ¥
 		string Order;
 		cin >> Order;
 		queue<char> order;
@@ -39,37 +39,37 @@ int main() {
 			order.push(Order[i]);
 		}
 		
-	    //¹è¿­¿¡ µé¾îÀÖ´Â ¼ö °³¼ö ÀÔ·Â
+	    //ë°°ì—´ì— ë“¤ì–´ìˆëŠ” ìˆ˜ ê°œìˆ˜ ì…ë ¥
 		cin >> n;
 
-		// ¼ö ÀÔ·Â
+		// ìˆ˜ ì…ë ¥
 		string str;
 		cin >> str;
 		str.erase(remove(str.begin(), str.end(), '['));
 		str.erase(remove(str.begin(), str.end(), ']'));
 		deque<string> num = split(str, ',');
 
-		// ¸í·É¾î ½ÇÇà
+		// ëª…ë ¹ì–´ ì‹¤í–‰
 		int orderSize = order.size();
 		for (int i = 0; i < orderSize; i++) {
 
-			// ³²Àº ¼ıÀÚ°¡ ÀÖ°Å³ª, ¾ø¾îµµ R¿¡ ´ëÇÑ ¿¬»êÀº °¡´ÉÇÏ´Ù.
+			// ë‚¨ì€ ìˆ«ìê°€ ìˆê±°ë‚˜, ì—†ì–´ë„ Rì— ëŒ€í•œ ì—°ì‚°ì€ ê°€ëŠ¥í•˜ë‹¤.
 			if (num.size() > 0 || order.front() == 'R') {
-				// order°¡ RÀÌ¸é µÚÁıÇû´Ù°í ÀÎ½ÄÇØÁÖ°í, order¸¦ »©³½´Ù.
+				// orderê°€ Rì´ë©´ ë’¤ì§‘í˜”ë‹¤ê³  ì¸ì‹í•´ì£¼ê³ , orderë¥¼ ë¹¼ë‚¸ë‹¤.
 				if (order.front() == 'R') {
-					// re °¡ true¸é false·Î, false¸é true·Î ÇØÁØ´Ù.
+					// re ê°€ trueë©´ falseë¡œ, falseë©´ trueë¡œ í•´ì¤€ë‹¤.
 					if (re) re = false;
 					else re = true;
 					order.pop();
 				}
-				// µÚÁıÇû´Ù¸é µÚ¿¡¼­ »©ÁÖ°í, ¾Æ´Ï¸é ¾Õ¿¡¼­ »©ÁØ´Ù.
+				// ë’¤ì§‘í˜”ë‹¤ë©´ ë’¤ì—ì„œ ë¹¼ì£¼ê³ , ì•„ë‹ˆë©´ ì•ì—ì„œ ë¹¼ì¤€ë‹¤.
 				else {
 					order.pop();
 					if (re) num.pop_back();
 					else num.pop_front();
 				}
 			}
-			// ¼ıÀÚ°¡ ¾ø´Âµ¥ ¸í·É¾î°¡ ³²¾ÒÀ¸¸é ¿¡·¯´Ù.
+			// ìˆ«ìê°€ ì—†ëŠ”ë° ëª…ë ¹ì–´ê°€ ë‚¨ì•˜ìœ¼ë©´ ì—ëŸ¬ë‹¤.
 			else isError = true;
 		}
 
@@ -101,6 +101,6 @@ int main() {
 		cout << answer[i];
 		if (answer[i] == "error" || answer[i] == "]") cout << endl;
 	}
-	
+	 
 	return 0;
 }
