@@ -33,7 +33,8 @@ int main() {
 
 	while (m--) {
 		cin >> x_1 >> y_1 >> x_2 >> y_2;
-		cout << Sum[x_2][y_2] + Sum[x_1 - 1][y_1 - 1] - Sum[x_2][y_1-1] - Sum[x_1-1][y_2] << endl;
+		// 아래 출력에서 endl을 쓰면 시간 초과 발생
+		cout << Sum[x_2][y_2] + Sum[x_1 - 1][y_1 - 1] - Sum[x_2][y_1-1] - Sum[x_1-1][y_2] << "\n"; 
 	}
 
 	return 0;
