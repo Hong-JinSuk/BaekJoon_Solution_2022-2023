@@ -17,59 +17,59 @@ void Bee(int start, int cnt, int n) {
 	beehouse[cnt][start] = number;
 
 	int x = cnt, y = start;
-	// ¿À¸¥ÂÊ ¾Æ·¡
+	// ì˜¤ë¥¸ìª½ ì•„ë˜
 	for (int i = 0; i < n - 1; i++) {
 		number++;
 		x += 1;
 		y += 1;
 		beehouse[x][y] = number;
-		//cout << "¿À¸¥ÂÊ¾Æ·¡\n";
+		//cout << "ì˜¤ë¥¸ìª½ì•„ë˜\n";
 		//cout << "x: " << x << ", y: " << y << endl;
 	}
-	// ¾Æ·¡·Î
+	// ì•„ë˜ë¡œ
 	for (int i = 0; i < n - 1; i++) {
 		number++;
 		x += 2;
 		beehouse[x][y] = number;
-		//cout << "¾Æ·¡\n";
+		//cout << "ì•„ë˜\n";
 		//cout << "x: " << x << ", y: " << y << endl;
 	}
-	//¿ŞÂÊ ¾Æ·¡
+	//ì™¼ìª½ ì•„ë˜
 	for (int i = 0; i < n - 1; i++) {
 		number++;
 		x += 1;
 		y -= 1;
 		beehouse[x][y] = number;
-		//cout << "¿ŞÂÊ¾Æ·¡\n";
+		//cout << "ì™¼ìª½ì•„ë˜\n";
 		//cout << "x: " << x << ", y: " << y << endl;
 	}
-	//¿ŞÂÊ À§
+	//ì™¼ìª½ ìœ„
 	for (int i = 0; i < n - 1; i++) {
 		number++;
 		x -= 1;
 		y -= 1;
 		beehouse[x][y] = number;
-		//cout << "¿ŞÂÊ À§\n";
+		//cout << "ì™¼ìª½ ìœ„\n";
 		//cout << "x: " << x << ", y: " << y << endl;
 	}
-	// À§·Î
+	// ìœ„ë¡œ
 	for (int i = 0; i < n - 1; i++) {
 		number++;
 		x -= 2;
 		beehouse[x][y] = number;
-		//cout << "À§\n";
+		//cout << "ìœ„\n";
 		//cout << "x: " << x << ", y: " << y << endl;
 	}
-	// ¿À¸¥ÂÊ À§
+	// ì˜¤ë¥¸ìª½ ìœ„
 	for (int i = 0; i < n - 2; i++) {
 		number++;
 		x -= 1;
 		y += 1;
 		beehouse[x][y] = number;
-		//cout << "¿À¸¥ÂÊ À§\n";
+		//cout << "ì˜¤ë¥¸ìª½ ìœ„\n";
 		//cout << "x: " << x << ", y: " << y << endl;
 	}
-	//cout << "´Ù½Ã ½ÃÀÛ\n";
+	//cout << "ë‹¤ì‹œ ì‹œì‘\n";
 	Bee(start, cnt + 2, n - 1);
 }
 
@@ -87,5 +87,7 @@ int main() {
 		}
 		cout << endl;
 	}
+	
+	// ì–´ë–¤ê±¸ ì¶œë ¥í•œê±´ì§€ 
 	return 0;
 }
