@@ -1,20 +1,20 @@
 #include<iostream>
 #include<algorithm>
-#include<cstring>
+#include<cstring> // ë°±ì¤€ì—ì„œ memsetì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ë„£ì–´ì¤Œ
 #define endl "\n"
 
 using namespace std;
 
 int n, m, Case;
-bool visited[501] = { false, }; // ¹æ¹®ÇÑ ³ëµåÀÎÁö ¿©ºÎ
-bool Route[501][501] = { false, }; // ±æ
+bool visited[501] = { false, }; // ë°©ë¬¸í•œ ë…¸ë“œì¸ì§€ ì—¬ë¶€
+bool Route[501][501] = { false, }; // ê¸¸
 bool isTree = true;
 
-void DFS(int present, int root) { // ÀÌÀü¿¡ ¿Â ³ëµå¿Í ÇöÀç ³ëµå ¹Ş¾Æ¿È, µ¹¾Æ°¡¸é ¾ÈµÇ±â ¶§¹®
-	if (visited[root]) return; // ½ÎÀÌÅ¬·Î µ¹¾Æ¿Â°æ¿ì µ¹¾Æ°£´ÙÀ×.
+void DFS(int present, int root) { // ì´ì „ì— ì˜¨ ë…¸ë“œì™€ í˜„ì¬ ë…¸ë“œ ë°›ì•„ì˜´, ëŒì•„ê°€ë©´ ì•ˆë˜ê¸° ë•Œë¬¸
+	if (visited[root]) return; // ì‹¸ì´í´ë¡œ ëŒì•„ì˜¨ê²½ìš° ëŒì•„ê°„ë‹¤ì‰.
 	for (int i = 1; i <= n; i++) {
-		if (Route[root][i] && i!=present) { // ÇöÀç ³ëµå¿¡¼­ ¿òÁ÷ÀÏ ±æÀÌ ÀÖ°í, µÚ·Î µ¹¾Æ°¡´Â ±æÀÌ ¾Æ´Ï¶ó¸é
-			if (visited[i]) isTree = false; // ´ÙÀ½³ëµå¿¡ ¹æ¹®ÇÑÀû ÀÖÀ¸¸é ¼øÈ¯ Á¸Àç
+		if (Route[root][i] && i!=present) { // í˜„ì¬ ë…¸ë“œì—ì„œ ì›€ì§ì¼ ê¸¸ì´ ìˆê³ , ë’¤ë¡œ ëŒì•„ê°€ëŠ” ê¸¸ì´ ì•„ë‹ˆë¼ë©´
+			if (visited[i]) isTree = false; // ë‹¤ìŒë…¸ë“œì— ë°©ë¬¸í•œì  ìˆìœ¼ë©´ ìˆœí™˜ ì¡´ì¬
 			visited[root] = true;
 			DFS(root, i);
 		}
@@ -27,24 +27,24 @@ int main() {
 
 	while (1) {
 
-		Case++; // ±×³É ÄÉÀÌ½º °¹¼ö
-		int count_tree = 0; // Æ®¸® °¹¼ö
+		Case++; // ê·¸ëƒ¥ ì¼€ì´ìŠ¤ ê°¯ìˆ˜
+		int count_tree = 0; // íŠ¸ë¦¬ ê°¯ìˆ˜
 
 		cin >> n >> m;
-		if (n == 0 && m == 0) break; // 0,0 ÀÔ·Â¹ŞÀ¸¸é Á¾·á
+		if (n == 0 && m == 0) break; // 0,0 ì…ë ¥ë°›ìœ¼ë©´ ì¢…ë£Œ
 
-		for (int i = 0; i < m; i++) { // ±æ ÀÔ·Â
+		for (int i = 0; i < m; i++) { // ê¸¸ ì…ë ¥
 			int start, end;
 			cin >> start >> end;
 			Route[start][end] = true;
 			Route[end][start] = true;
 		}
 
-		for (int i = 1; i <= n; i++) { // 1~n¹ø ³ëµå¿¡¼­ ¸ğµÎ Å½»öÇÏ´Â °æ¿ì¸¦ °®´Â´Ù.
-			if (!visited[i]) { // ¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é Å½»ö
+		for (int i = 1; i <= n; i++) { // 1~në²ˆ ë…¸ë“œì—ì„œ ëª¨ë‘ íƒìƒ‰í•˜ëŠ” ê²½ìš°ë¥¼ ê°–ëŠ”ë‹¤.
+			if (!visited[i]) { // ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´ íƒìƒ‰
 				DFS(0, i);
-				if (isTree) count_tree++; // ¹æ¹®ÇØ¼­ Æ®¸®¶ó ÇÏ¸é 1°³ ´õÇØÁÜ.
-				isTree = true; // ÃÊ±âÈ­
+				if (isTree) count_tree++; // ë°©ë¬¸í•´ì„œ íŠ¸ë¦¬ë¼ í•˜ë©´ 1ê°œ ë”í•´ì¤Œ.
+				isTree = true; // ì´ˆê¸°í™”
 			}
 		}
 
@@ -52,8 +52,8 @@ int main() {
 		else if (count_tree == 1) cout << "Case " << Case << ": There is one tree." << endl;
 		else cout << "Case " << Case << ": A forest of " << count_tree << " trees." << endl;
 
-		fill_n(visited, 501, false); // ¹è¿­ ÃÊ±âÈ­
-		memset(Route, false, sizeof(Route)); // ¹è¿­ ÃÊ±âÈ­
+		fill_n(visited, 501, false); // ë°°ì—´ ì´ˆê¸°í™”
+		memset(Route, false, sizeof(Route)); // ë°°ì—´ ì´ˆê¸°í™”
 	}
 
 	return 0;
