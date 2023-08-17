@@ -25,11 +25,11 @@ int solution() {
 	int answer = 0;
 
 	for (int i = 0; i < homework.size(); i++) {
-		if (homework[i].first <= 0) continue; // À¯È¿±â°£ Áö³­°Ç ÆÐ¾¥
+		if (homework[i].first <= 0) continue; // ìœ íš¨ê¸°ê°„ ì§€ë‚œê±´ íŒ¨ì‘¤
 		answer += homework[i].second;
 		for (int j = i + 1; j < homework.size(); j++) {
-			// ¹æ±Ý ´õÇØÁØ ¼÷Á¦º¸´Ù ±âÇÑÀÌ ±ä ³à¼®µé ±âÇÑ -1
-			// ¿Ö³Ä? ±×³à¼®µéÀÌ 5ÀÏ ³²¾ÒÀ¸¸é ±× 5ÀÏÁß ÇÏ·ç´Â ¹æ±Ý ´õÇØÁØ ¼÷Á¦ ÇØ¾ßµÇ¼­
+			// ë°©ê¸ˆ ë”í•´ì¤€ ìˆ™ì œë³´ë‹¤ ê¸°í•œì´ ê¸´ ë…€ì„ë“¤ ê¸°í•œ -1
+			// ì™œëƒ? ê·¸ë…€ì„ë“¤ì´ 5ì¼ ë‚¨ì•˜ìœ¼ë©´ ê·¸ 5ì¼ì¤‘ í•˜ë£¨ëŠ” ë°©ê¸ˆ ë”í•´ì¤€ ìˆ™ì œ í•´ì•¼ë˜ì„œ
 			if (homework[i].first <= homework[j].first) {
 				homework[j].first -= 1;
 			}
