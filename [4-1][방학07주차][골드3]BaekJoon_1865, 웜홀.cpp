@@ -4,19 +4,19 @@
 #define MAX 987654231
 using namespace std;
 
-int n, m, w, TC; // ÁöÁ¡, µµ·Î, ¿úÈ¦(¹æÇâ¤·)
+int n, m, w, TC; // ì§€ì , ë„ë¡œ, ì›œí™€(ë°©í–¥ã…‡)
 int dp[2501];
 
 void input(vector<pair<int, int>> Gate[2501]) {
 	for (int i = 0; i < 1; i++) {
 		cin >> n >> m >> w;
 		int s, e, t;
-		for (int j = 0; j < m; j++) { // µµ·Î
+		for (int j = 0; j < m; j++) { // ë„ë¡œ
 			cin >> s >> e >> t;
 			Gate[s].push_back({ e,t });
 			Gate[e].push_back({ s,t });
 		}
-		for (int j = 0; j < w; j++) { // ¿úÈ¦
+		for (int j = 0; j < w; j++) { // ì›œí™€
 			cin >> s >> e >> t;
 			Gate[s].push_back({ e,-t });
 		}
@@ -25,7 +25,7 @@ void input(vector<pair<int, int>> Gate[2501]) {
 
 //void Search(vector<pair<int, int>> Gate[2501]) {
 //
-//	for (int i = 1; i <= n; i++) { // ¾î´À ÁöÁ¡ÀÌµç À½ÀÇ »çÀÌÅ¬ Á¸ÀçÇÏ¸é ‰Î.
+//	for (int i = 1; i <= n; i++) { // ì–´ëŠ ì§€ì ì´ë“  ìŒì˜ ì‚¬ì´í´ ì¡´ì¬í•˜ë©´ Â‰.
 //
 //		for (int k = 0; k < 2501; k++)
 //			dp[k] = MAX;
@@ -33,23 +33,23 @@ void input(vector<pair<int, int>> Gate[2501]) {
 //		queue<int> q;
 //
 //		int start = i;
-//		dp[start] = 0; // ½ÃÀÛÁöÁ¡Àº ÃÊ±âÈ­
+//		dp[start] = 0; // ì‹œì‘ì§€ì ì€ ì´ˆê¸°í™”
 //		q.push(start);
 //		int cnt = 0;
 //		while (!q.empty()) {
 //			int q_size = q.size();
 //			cnt++;
-//			for (int x = 0; x < q_size; x++) { // BFS¹æ½Ä
-//				int cur = q.front(); // ÇöÀç À§Ä¡
+//			for (int x = 0; x < q_size; x++) { // BFSë°©ì‹
+//				int cur = q.front(); // í˜„ì¬ ìœ„ì¹˜
 //				int cur_time = dp[cur];
 //				q.pop();
 //
-//				for (int j = 0; j < Gate[cur].size(); j++) { // ÇöÀç ÁöÁ¡¿¡¼­ÀÇ ±æ
+//				for (int j = 0; j < Gate[cur].size(); j++) { // í˜„ì¬ ì§€ì ì—ì„œì˜ ê¸¸
 //					int next = Gate[cur][j].first;
 //					int Time = Gate[cur][j].second;
-//					if (dp[next] > dp[cur] + Time) { // ´õ ºü¸¥±æÀÌ¸é
+//					if (dp[next] > dp[cur] + Time) { // ë” ë¹ ë¥¸ê¸¸ì´ë©´
 //						q.push(next);
-//						// À½ÀÇ ±æÀÎµ¥, ÀÌ¹Ì Áö³ª¿ÂÀûÀÌ ÀÖ´Ù?? => À½ÀÇ »çÀÌÅ¬ °Ë»ç
+//						// ìŒì˜ ê¸¸ì¸ë°, ì´ë¯¸ ì§€ë‚˜ì˜¨ì ì´ ìˆë‹¤?? => ìŒì˜ ì‚¬ì´í´ ê²€ì‚¬
 //						if (dp[next] != MAX && dp[next] + dp[cur] + Time < 0) { 
 //							//cout << dp[next] << ", " << dp[cur] + Time << endl;
 //							cout << "YES\n";
@@ -59,7 +59,7 @@ void input(vector<pair<int, int>> Gate[2501]) {
 //							cout << "YES\n";
 //							return;
 //						}*/
-//						dp[next] = dp[cur] + Time; // ¾÷µ«
+//						dp[next] = dp[cur] + Time; // ì—…ëƒ
 //					}
 //				}
 //			}
@@ -69,33 +69,33 @@ void input(vector<pair<int, int>> Gate[2501]) {
 //	return;
 //}
 
-// ¿úÈ¦¸¸ ÀÖÀ» ¶§, 1->2->3->4 ÀÌÈÄ¿¡ 1->4 ·Î ¿úÈ¦·Î°¡¸é YES°¡ ³ª¿È.
+// ì›œí™€ë§Œ ìˆì„ ë•Œ, 1->2->3->4 ì´í›„ì— 1->4 ë¡œ ì›œí™€ë¡œê°€ë©´ YESê°€ ë‚˜ì˜´.
 
 void Search(vector<pair<int,int>> Gate[2501]) {
 
 	for (int k = 0; k < 2501; k++)
 		dp[k] = 0;
 
-	for (int i = 1; i < n; i++) { // n-1¹ø
-		for (int cur = 1; cur <= n; cur++) { // ¸ğµç ÁöÁ¡¿¡¼­
-			for (int k = 0; k < Gate[cur].size(); k++) { // ¸ğµç±æ ¾÷µ«
+	for (int i = 1; i < n; i++) { // n-1ë²ˆ
+		for (int cur = 1; cur <= n; cur++) { // ëª¨ë“  ì§€ì ì—ì„œ
+			for (int k = 0; k < Gate[cur].size(); k++) { // ëª¨ë“ ê¸¸ ì—…ëƒ
 				int next = Gate[cur][k].first;
 				int cur_time = dp[cur];
 				int Cost = Gate[cur][k].second;
 
-				// À½¼öÀÎ °æ¿ì¸¸ update -> À½ÀÇ ½ÎÀÌÅ¬ÀÌ¸é °á±¹ ¾÷µ«‰Î.
+				// ìŒìˆ˜ì¸ ê²½ìš°ë§Œ update -> ìŒì˜ ì‹¸ì´í´ì´ë©´ ê²°êµ­ ì—…ëƒÂ‰.
 				if (dp[next] > cur_time + Cost) dp[next] = cur_time + Cost;
 			}
 		}
 	}
 
-	for (int cur = 1; cur <= n; cur++) { // ¸ğµç ÁöÁ¡¿¡¼­
-		for (int k = 0; k < Gate[cur].size(); k++) { // ¸ğµç±æ ¾÷µ«
+	for (int cur = 1; cur <= n; cur++) { // ëª¨ë“  ì§€ì ì—ì„œ
+		for (int k = 0; k < Gate[cur].size(); k++) { // ëª¨ë“ ê¸¸ ì—…ëƒ
 			int next = Gate[cur][k].first;
 			int cur_time = dp[cur];
 			int Cost = Gate[cur][k].second;
 
-			// À½¼öÀÎ °æ¿ì¸¸ update -> À½ÀÇ ½ÎÀÌÅ¬ÀÌ¸é °á±¹ ¾÷µ«‰Î.
+			// ìŒìˆ˜ì¸ ê²½ìš°ë§Œ update -> ìŒì˜ ì‹¸ì´í´ì´ë©´ ê²°êµ­ ì—…ëƒÂ‰.
 			if (dp[next] > cur_time + Cost) {
 				cout << "YES\n";
 				return;
