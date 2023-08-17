@@ -23,9 +23,9 @@ void input() {
 
 int DFS(int cur_x, int cur_y) {
 
-	// ÀÌ¹Ì ¹æ¹®ÇÑ °÷ÀÌ¸é ±×¸¸Å­ ´õÇØÁÜ
+	// ì´ë¯¸ ë°©ë¬¸í•œ ê³³ì´ë©´ ê·¸ë§Œí¼ ë”í•´ì¤Œ
 	if (dp[cur_y][cur_x] != -1) return dp[cur_y][cur_x];
-	// µµÂøÁö¿¡ µµÂøÇÏ¸é Á¤´äÀ» ´õÇØÁÖ°í ³¡³»ÁØ´Ù.
+	// ë„ì°©ì§€ì— ë„ì°©í•˜ë©´ ì •ë‹µì„ ë”í•´ì£¼ê³  ëë‚´ì¤€ë‹¤.
 	if (cur_x == m - 1 && cur_y == n - 1) {
 		// answer++;
 		return 1;
@@ -36,9 +36,9 @@ int DFS(int cur_x, int cur_y) {
 		int next_x = cur_x + n_x[i];
 		int next_y = cur_y + n_y[i];
 
-		// ¹üÀ§¾ÈÀÌ°í ´ÙÀ½ÁöÁ¡ÀÌ ¹æ¹®ÇÑ ÁöÁ¡ÀÌ ¾Æ´Ò ¶§
+		// ë²”ìœ„ì•ˆì´ê³  ë‹¤ìŒì§€ì ì´ ë°©ë¬¸í•œ ì§€ì ì´ ì•„ë‹ ë•Œ
 		if (next_x > -1 && next_y > -1 && next_x < m && next_y < n) {
-			// ´õ ³·Àº °÷ÀÌ¶ó¸é
+			// ë” ë‚®ì€ ê³³ì´ë¼ë©´
 			if (Map[next_y][next_x] < Map[cur_y][cur_x]) {
 				dp[cur_y][cur_x] += DFS(next_x, next_y);
 			}
