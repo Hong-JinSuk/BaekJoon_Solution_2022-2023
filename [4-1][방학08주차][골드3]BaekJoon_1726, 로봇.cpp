@@ -25,7 +25,7 @@ void input() {
 	cin >> end_y >> end_x >> end_d;
 }
 
-pair<int,int> can_turn(int cur_d) { // ¿·À¸·Î È¸Àü ÇÒ ¼ö ÀÖ´Â °÷
+pair<int,int> can_turn(int cur_d) { // ì˜†ìœ¼ë¡œ íšŒì „ í•  ìˆ˜ ìˆëŠ” ê³³
 	if (cur_d == 1) return { 3,4 };
 	else if (cur_d == 2) return { 3,4 };
 	else if (cur_d == 3) return { 1,2 };
@@ -79,8 +79,8 @@ void Push(int x, int y, int d_1, int d_2) {
 
 void BFS() {
 
-	q.push({start_x, start_y, start_d}); // x,y,¹æÇâ
-	isvisit[start_y][start_x][start_d] = true; // ½ÃÀÛÁöÁ¡ ÃÊ±âÈ­
+	q.push({start_x, start_y, start_d}); // x,y,ë°©í–¥
+	isvisit[start_y][start_x][start_d] = true; // ì‹œì‘ì§€ì  ì´ˆê¸°í™”
 
 	while (!q.empty()) {
 		int q_size = q.size();
@@ -93,9 +93,9 @@ void BFS() {
 				cout << cnt << endl;
 				return;
 			}
-			go(cur_x, cur_y, cur_d); // ÇöÀç ¹æÇâÀ¸·Î ÀÌµ¿
+			go(cur_x, cur_y, cur_d); // í˜„ì¬ ë°©í–¥ìœ¼ë¡œ ì´ë™
 			auto next_d = can_turn(cur_d);
-			Push(cur_x, cur_y, next_d.first, next_d.second); // È¸Àü
+			Push(cur_x, cur_y, next_d.first, next_d.second); // íšŒì „
 		}
 		cnt++;
 	}
